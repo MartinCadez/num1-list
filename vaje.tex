@@ -1,0 +1,235 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            Document Information                              %
+% ---------------------------------------------------------------------------- %
+% Document Title: Midterm Exam - Public Finance, subject Money & Finance       %
+% Created by: Martin Čadež                                                     %
+% Date Created: 2025/04/20                                                     %
+% Version: 1.0                                                                 %
+% ---------------------------------------------------------------------------- %
+% Purpose: This LaTeX document is configured for academic reasons.             %
+% ---------------------------------------------------------------------------- %
+% Last Updated: 2025/04/20                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% TODO List:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         Preamble Setup for Document                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- General Document Settings ------------------------------------------------
+\documentclass[12pt]{amsart}
+
+% --- Page Layout and Geometry -------------------------------------------------
+\usepackage[letterpaper, margin=1in]{geometry}
+
+% --- Font and Microtype Settings ----------------------------------------------
+\usepackage{microtype}
+
+% --- Mathematical Symbols and Fonts -------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{mathtools}
+
+% --- Tables and Arrays --------------------------------------------------------
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{tabularray}
+\usepackage{tabularx}
+
+
+% --- Graphics and Color -------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+
+% --- Section and Formatting Control -------------------------------------------
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{ragged2e}
+
+% --- Text Formatting ----------------------------------------------------------
+\usepackage[normalem]{ulem}
+\usepackage{mdframed}
+\usepackage{hyphenat}
+
+% --- Lists and Enumerations ---------------------------------------------------
+\usepackage{enumitem}
+
+% --- Hyperlinks and URLs ------------------------------------------------------
+\usepackage{url}
+\usepackage{hyperref}
+
+% --- Miscellaneous ------------------------------------------------------------
+\usepackage{circledsteps}
+\usepackage{fancyhdr}
+
+% \usepackage{tikz}
+% \usetikzlibrary{patterns}
+% \usetikzlibrary{backgrounds}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       Custom Commands and Environments                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Theorem Environments Formatting ------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{definition}{Definition}
+
+% --- Color Definitions --------------------------------------------------------
+\definecolor{color_blue_1}{HTML}{3276e3}
+\definecolor{color_blue_2}{HTML}{b5dcff}
+\definecolor{color_1_pink}{HTML}{ed4ac4}
+
+% --- Table of Contents Depth --------------------------------------------------
+\setcounter{tocdepth}{1}
+
+% --- Page Layout and Geometry -------------------------------------------------
+\geometry{
+  top=2.2cm,
+  headheight=0mm,
+  headsep=0mm,
+}
+\pagestyle{fancy}
+\fancyhf{}
+
+% --- Header and Footer Rules --------------------------------------------------
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{44pt}
+\fancyfoot[C]{\thepage}
+
+% --- Section Formatting -------------------------------------------------------
+\titleformat{\section}
+{\Large\bfseries}
+{}
+{0pt}
+{}
+
+% --- Spacing Definitions ------------------------------------------------------
+\pgfplotsset{compat=newest}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            End of Preamble Setup                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{enumerate}
+  \item Digit-Number definition with base $b$: \\
+  $ m= d_n\, d_{n-1} \, \ldots d_1 \, d_0 \, . \, d_{-1} \, \ldots \,d_{-m} $
+  \item Converting from base $b$ to base 10: \\
+  $ N_{10} = b^{-m} \cdot \sum_{k=0}^{n + m} \, d_{k - m} \cdot b^k$
+  \item Converting from base 10 to b: \\
+  $x = int(x) + dec(x)$ \\
+  $int(x) \uparrow, \quad dec(x) \downarrow $
+  \item Representation of binary number: \\
+  $ x = (-1)^s \cdot m \cdot b^{e}, \quad \text{where:} \, e \in [L, U]$ \\
+  $ m = 0.\, c_1 \, c_2 \, \ldots c_t, \, b = \text{baza}$\\
+  $ t = \text{dolžine mantise}, \, c_i = \text{$i$-ta števka}$ \\
+  $ P(b, t, L, U) = \text{representation set}$  \\
+  $ \text{osnovna zaok. napaka:} \, u = \frac{b^{1-t}}{2} $
+  \item IEEE Rounding for $b=2$:
+  \vspace{-0.3cm}
+  \begin{table}[h!]
+    \quad \quad \quad \raggedright
+    \begin{tabular}{||c c c||} 
+    \hline
+    $c_{ (t+1) }$ & $c_{ (t+2) }$ & Round Up \\ [0.5ex] 
+    \hline\hline
+    0 & 0 & Never \\
+    0 & 1 & Never \\
+    1 & 0 & if $c_t=1$ \\
+    1 & 1 & Always \\
+    \hline
+    \end{tabular}
+  \end{table}
+  \vspace{-0.3cm}
+  \item IEEE standards, $\circ \in \{ +, -, \cdot, / \}$: \\
+  $fl(\cdot)$ - floating point evaluation \\
+  $fl(x \circ y) = (x \circ y)(1 + \delta), \,\, |\delta| < |u|$ \\
+  $fl(\sqrt{x}) = \sqrt{x} (1 + \delta), \,\, |\delta| < |u|$
+  \item Absolute \& Relative Error: \\
+  $\Delta x = | x - \hat{x}| , \quad \delta = \frac{|x - \hat{x}|}{|x|} $
+  \item Errors types: \\
+  $ D_n = | y - \overline{y} |, \, D_m = | \overline{y} - \tilde{y} |, \, D_z = | \tilde{y} - \hat{y} | $
+  \item Stability problems:
+  \begin{itemize}
+    \item Odštevanja števil enake velikost
+    \item Deljenje s števili blizu 0
+  \end{itemize}
+  \item Relative-Stability definitions: \\
+  Direktna: $ |\delta| = |\frac{fl(x) - x}{x}| \leq C \cdot u \subseteq \mathcal{O}(u) $ \\
+  Obratna: $ fl(f(x)) = f(\tilde{x}), \,\, |\tilde{x} - x | \leq \mathcal{O}(u) |x|$ \\
+  Pri obratni stabilnosti, preverimo ali \\
+    lahko vsako napako interpretiramo \\
+    kot perturbacijo vhoda.
+  % \item Limitations: 
+  % \begin{itemize}
+  %   \item Overflow: $0 < |x| < b^{L}$
+  %   \item Underdlow: $|x| > b^{U}$
+  % \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\begin{enumerate}
+  \item\textbf{ Fixed point iteration }: \\
+  $f(x) = 0, \,\, \text{use}\,\, g(x_r) = x_{r + 1} \,\, \text{or} \,\, g(x) = x + f(x)$  \\
+  $ \alpha_i \, \text{je $i$-ta ničla funkcije $f$}$ \\
+  Privlačne točke: $ |g'(x)| < 1$ \\
+  Odbojne točke: $ |g'(x) > 1$ \\
+  Neznana situacija: $ |g'(x)| = 1$ \\
+  Error es. : $ | x_{r+1} - \alpha | \leq \frac{m}{1 - m} |g(x_r) - g(x_{r-1})| $ \\
+  $m = \text{sup}_{x \in I}\, g'(x) < 1, \,\, g \, \text{je skrčitev}, \, \, \alpha \in I $ \\
+  Red konvergence je prvi odvod: $g^{(n)}(\alpha) \neq 0$ \\
+  Konvergenca:
+  \begin{itemize}
+    \item $x_{r+1} - x_r = f(x_r) > 0$, \, $\forall r: x_r < \alpha$ 
+    \item $x_{r+1} - x_r = f(x_r) < 0$, \, $\forall r: x_r > \alpha$ 
+  \end{itemize}
+\item\textbf{ Newton-Rapson Method: } \\
+  $ g(x_r) = x_{r+1} = x_r - \frac{f(x_r)}{f^{'}(x_r)} $ \\
+  $ g^{'}(x_r) = \frac{f(x) \cdot f^{''}(x_r)}{(f^{'}(x_r))^2} $ \\
+  Red Konvergence: \\
+  Ničla = $\alpha$, kratnost ničle = $m_{\alpha}$
+  \begin{itemize}
+    \item $m_{\alpha} = 1 \, \implies \text{vsaj kvadratnična} $
+    \item $ m_{\alpha} > 1 \, \implies \lim_{x \to \alpha} g^{'}(x) = 1 - \frac{1}{m}$
+  \end{itemize}
+  Konvergenca:
+  \begin{itemize}
+    \item $x_{r+1} - x_r = \frac{f(x_r)}{f^{'}(x_r)} > 0$, \, $\forall r: x_r < \alpha$ 
+    \item $x_{r+1} - x_r = \frac{f(x_r)}{f^{'}(x_r)} < 0$, \, $\forall r: x_r > \alpha$ 
+  \end{itemize}
+  \item\textbf{ Modified Newton-Rapson Method: } \\
+  $G(x_r) = x_{r+1} = a\cdot x_r - b \frac{f(x_r)}{f^{'}(x_r)} $ \\
+  $G^{'}(x_r) = a - b + b g'(x_r) $ \\ 
+  $\text{vsaj kvadratnična konv.  $a=1$ in $b=m_\alpha$}$ \\
+  $\lim_{x \to \alpha} G^{'} = 0, (a=1, \, b=m_{\alpha})$ \\
+  \textbf{ Izrek o konvergenci }: Naj bo $f$ na intervalu \\ 
+  $I = [a, \infty)$ dvakrat zvezno odvedljiva, \\
+  naračajoča in konveksna funkcija, ki ima ničlo \\
+  $\alpha \in I$. Potem je $\alpha$ edina ničla $f$ na $I$ in za \\ 
+  vsak $x_o \in I$ tangetna metoda konvergira k $\alpha$.
+
+\end{enumerate}
+\newpage
+
+\begin{enumerate}
+  \item \textbf{ LU-brez-pivotiranja: } \\
+  $ A = LU, \, Ax =b, \, LUx=b, \, Ly=b, \, Ux = y$ \\
+  Big-O: $\frac{2n^3}{3} + \mathcal{O}(n^2)$
+  \item \textbf{LU-delno-pivotiranje}: \\
+  $PLUx=Pb, \, \det(A)=det(U)$ \\
+  $P= I \cdot \prod_{i=1}^{n-1} P_i ,\,\, \prod_{i=1}^{n-1} L_iP_i \, \cdot A = U$
+  % \item QR-razcep
+\end{enumerate}
+\end{document}
+
